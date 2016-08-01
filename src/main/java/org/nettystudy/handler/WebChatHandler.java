@@ -9,7 +9,7 @@ public class WebChatHandler extends ChannelInboundHandlerAdapter{
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		
-		if(msg instanceof TextWebSocketFrame){
+		if(msg instanceof String){
 			
 			ctx.write(msg);
 			ctx.flush();
