@@ -1,7 +1,6 @@
 package org.nettystudy;
 
-import org.nettystudy.decoder.HttpToChatMessageDecoder;
-import org.nettystudy.handler.WebChatHandler;
+import org.nettystudy.handler.WebChatInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +27,7 @@ public class ChatChannelInitializer extends ChannelInitializer<SocketChannel> {
 				 * 넘어온 http패킷을 업그레이드를 할거. 
 				 */
 				.addLast(new WebSocketServerProtocolHandler("/chat")) // http://localhost:9001/chat
-				.addLast(new HttpToChatMessageDecoder())
-				.addLast(new WebChatHandler());
+//				.addLast(new HttpToChatMessageDecoder())
+				.addLast(new WebChatInboundHandler());
 	}
 }

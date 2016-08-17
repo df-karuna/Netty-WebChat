@@ -2,18 +2,24 @@ package org.nettystudy.decoder;
 
 import java.util.List;
 
+import org.nettystudy.bean.Message;
+
+import com.google.gson.Gson;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 
-public class HttpToChatMessageDecoder extends MessageToMessageDecoder<TextWebSocketFrame>{
+public class TextWebSocketFrameToMessageDecoder extends MessageToMessageDecoder<TextWebSocketFrame>{
 
 	@Override
 	protected void decode(ChannelHandlerContext ctx, TextWebSocketFrame msg,
 			List<Object> out) throws Exception {
-		String msgText = msg.text();
+		String text = msg.text();
 		
-		out.add(msgText);
+		Gson g = new Gson();
+		Message decoded = g.fromJson(text, Message.class);
+		
+		out.add(decoded);
 	}
-	
 }

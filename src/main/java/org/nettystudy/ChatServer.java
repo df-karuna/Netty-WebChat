@@ -1,11 +1,5 @@
 package org.nettystudy;
 
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicLong;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -15,13 +9,6 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
 public class ChatServer {
-	private static Logger logger = LoggerFactory.getLogger(ChatServer.class);
-	public static HashMap<String, String> testUsers = null;
-	protected static String index = "resources/html/index.html";
-
-	public static AtomicLong aChatDataSeq;
-	public static AtomicLong chatDataSeq;
-	public static AtomicLong bChatDataSeq;
 
 	public static void main(String[] args) {
 		int port = 9001;
